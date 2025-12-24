@@ -21,7 +21,6 @@ const slides = [
 let count = 10;
 let giftIndex = 0;
 
-/* Countdown */
 const timer = setInterval(() => {
   countdownEl.textContent = count;
   count--;
@@ -40,14 +39,11 @@ const timer = setInterval(() => {
   }
 }, 1000);
 
-/* Auto open gifts */
 function startAutoOpen() {
   setInterval(() => {
     if (giftIndex >= slides.length) return;
 
-    const gift = giftEls[giftIndex];
-    gift.classList.add("open");
-
+    giftEls[giftIndex].classList.add("open");
     photoEl.src = slides[giftIndex].photo;
     textEl.textContent = slides[giftIndex].text;
     revealEl.classList.remove("hidden");
@@ -56,7 +52,6 @@ function startAutoOpen() {
   }, 5000);
 }
 
-/* Fireworks */
 function startFireworks() {
   const c = document.getElementById("fireworks");
   const ctx = c.getContext("2d");
@@ -66,70 +61,55 @@ function startFireworks() {
 
   function burst() {
     for (let i = 0; i < 120; i++) {
-      p.push({
-        x: Math.random() * c.width,
-        y: Math.random() * c.height / 2,
-        vx: (Math.random() - 0.5) * 6,
-        vy: (Math.random() - 0.5) * 6,
-        life: 100
-      });
+      p.push({ x: Math.random()*c.width, y: Math.random()*c.height/2,
+               vx: (Math.random()-0.5)*6, vy: (Math.random()-0.5)*6, life: 100 });
     }
   }
 
   (function anim() {
-    ctx.clearRect(0, 0, c.width, c.height);
-    p.forEach((o, i) => {
-      ctx.fillStyle = "gold";
-      ctx.fillRect(o.x, o.y, 3, 3);
-      o.x += o.vx;
-      o.y += o.vy;
-      o.life--;
-      if (o.life <= 0) p.splice(i, 1);
+    ctx.clearRect(0,0,c.width,c.height);
+    p.forEach((o,i)=>{
+      ctx.fillStyle="gold";
+      ctx.fillRect(o.x,o.y,3,3);
+      o.x+=o.vx; o.y+=o.vy; o.life--;
+      if(o.life<=0) p.splice(i,1);
     });
-    if (p.length < 200) burst();
+    if(p.length<200) burst();
     requestAnimationFrame(anim);
   })();
 }
 
-/* Snow */
 function startSnow() {
   const c = document.getElementById("snow");
   const ctx = c.getContext("2d");
   c.width = innerWidth;
   c.height = innerHeight;
 
-  const flakes = Array.from({ length: 200 }, () => ({
-    x: Math.random() * c.width,
-    y: Math.random() * c.height,
-    r: Math.random() * 3 + 1,
-    s: Math.random() + 0.5
+  const flakes = Array.from({length:200},()=>({
+    x:Math.random()*c.width, y:Math.random()*c.height,
+    r:Math.random()*3+1, s:Math.random()+0.5
   }));
 
-  (function anim() {
-    ctx.clearRect(0, 0, c.width, c.height);
-    flakes.forEach(f => {
-      ctx.beginPath();
-      ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-      ctx.fillStyle = "white";
-      ctx.fill();
-      f.y += f.s;
-      if (f.y > c.height) f.y = 0;
+  (function anim(){
+    ctx.clearRect(0,0,c.width,c.height);
+    flakes.forEach(f=>{
+      ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,Math.PI*2);
+      ctx.fillStyle="white"; ctx.fill();
+      f.y+=f.s; if(f.y>c.height) f.y=0;
     });
     requestAnimationFrame(anim);
   })();
 }
 
-/* Roses */
 function startRoses() {
   const container = document.getElementById("rose-container");
 
   setInterval(() => {
     const rose = document.createElement("span");
     rose.textContent = "🌹";
-    rose.style.left = Math.random() * 100 + "vw";
-    rose.style.animationDuration = 5 + Math.random() * 5 + "s";
+    rose.style.left = Math.random()*100+"vw";
+    rose.style.animationDuration = 5 + Math.random()*5 + "s";
     container.appendChild(rose);
-
-    setTimeout(() => rose.remove(), 10000);
+    setTimeout(()=>rose.remove(),10000);
   }, 500);
 }
