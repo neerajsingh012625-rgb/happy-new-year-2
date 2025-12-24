@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background: radial-gradient(circle, #020024, #090979, #000);
+  background: radial-gradient(circle at top, #020024, #090979, #000);
   overflow: hidden;
   color: white;
   font-family: system-ui, sans-serif;
@@ -13,6 +13,8 @@ body {
   text-align: center;
   font-size: 100px;
   font-weight: bold;
+  color: gold;
+  text-shadow: 0 0 20px orange, 0 0 40px red;
 }
 
 #center {
@@ -27,6 +29,8 @@ body {
 #message {
   font-size: 80px;
   text-align: center;
+  color: gold;
+  text-shadow: 0 0 20px orange, 0 0 40px red;
   margin-bottom: 20px;
 }
 
@@ -56,13 +60,15 @@ body {
 #reveal img {
   width: 250px;
   border-radius: 15px;
-  box-shadow: 0 0 20px pink;
+  box-shadow: 0 0 20px hotpink;
 }
 
 #reveal p {
   font-size: 24px;
   margin-top: 10px;
   text-align: center;
+  color: white;
+  text-shadow: 0 0 10px hotpink;
 }
 
 #rose-container span {
@@ -73,9 +79,7 @@ body {
 }
 
 @keyframes fall {
-  to {
-    transform: translateY(110vh);
-  }
+  to { transform: translateY(110vh); }
 }
 
 canvas {
