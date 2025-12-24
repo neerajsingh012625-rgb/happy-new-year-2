@@ -1,0 +1,10 @@
+body{margin:0;background:radial-gradient(circle,#020024,#090979,#000);overflow:hidden;color:white;font-family:system-ui}
+#countdown{position:absolute;top:20px;width:100%;text-align:center;font-size:120px;font-weight:bold}
+#center{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center}
+#message{font-size:90px;text-align:center;animation:float 3s infinite}
+#message span{font-size:60px}
+#slideshow img{width:260px;border-radius:20px;box-shadow:0 0 25px hotpink}
+#stext{margin-top:10px;font-size:26px;text-align:center}
+.hidden{display:none}
+@keyframes float{50%{transform:translateY(-20px)}}
+canvas{position:absolute;inset:0;pointer-events:none}
