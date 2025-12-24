@@ -15,7 +15,7 @@ const giftEls = [
 const slides = [
   { photo: "photo1.jpg", text: "You are amazing 💖" },
   { photo: "photo2.jpg", text: "Keep smiling always 😊" },
-  { photo: "photo3.jpg", text: "This year is ours ✨" }
+  { photo: "photo3.jpg", text: "This year is yours ✨" }
 ];
 
 let count = 10;
